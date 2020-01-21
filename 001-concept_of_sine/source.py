@@ -1,4 +1,7 @@
-# code from: https://github.com/looselyconnected/ml-examples
+
+# Original Source Code From: "Can Machine Learn the Concept of Sine" by Ying Xie
+# Medium Link: https://towardsdatascience.com/can-machine-learn-the-concept-of-sine-4047dced3f11
+# GitHub: https://github.com/looselyconnected/ml-examples
 
 import pandas as pd 
 import pdb
