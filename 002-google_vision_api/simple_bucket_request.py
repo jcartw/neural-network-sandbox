@@ -23,8 +23,7 @@ request = {
     "requests": [{
         "image": { "source": {"gcsImageUri" : GCS_IMAGE_URI} },
         "features": [ { "type": "LABEL_DETECTION", "maxResults": 10 } ]
-        }
-    ]
+    }]
 }
 
 # Make POST request to Google API Vision
