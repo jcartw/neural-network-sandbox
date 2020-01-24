@@ -29,7 +29,7 @@ args = vars(ap.parse_args())
 
 # load the image, convert it to grayscale, and blur it slightly
 image = cv2.imread(args["image"])
-gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) # conver to grayscale (0-255)
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) # convert to grayscale (0-255)
 gray = cv2.GaussianBlur(gray, (7, 7), 0) # blur image
 print("Image dimensions: {0}".format(gray.shape))
 
