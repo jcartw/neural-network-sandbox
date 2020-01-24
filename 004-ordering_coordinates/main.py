@@ -9,7 +9,7 @@ import numpy as np
 import argparse
 import imutils
 import cv2
-from utils import order_points_old
+from utils import order_points_old, order_points
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
@@ -57,9 +57,9 @@ for (i, c) in enumerate(cnts):
 	# compute the rotated bounding box of the contour, then
 	# draw the contours
 	box = cv2.minAreaRect(c)
-	box = cv2.cv.BoxPoints(box) if imutils.is_cv2() else cv2.boxPoints(box)
-	box = np.array(box, dtype="int")
-	cv2.drawContours(image, [box], -1, (0, 255, 0), 2)
+	box = cv2.cv.BoxPoints(box) if imutils.is_cv2() else cv2.boxPoints(box) # 4x2 array (floats)
+	box = np.array(box, dtype="int") # 4x2 np.ndarray (ints)
+	cv2.drawContours(image, [box], -1, (0, 255, 0), 2) # draw box outlines (i.e. connect vertices)
 
 	# show the original coordinates
 	print("Object #{}:".format(i + 1))
@@ -70,7 +70,8 @@ for (i, c) in enumerate(cnts):
 	# in top-left, top-right, bottom-right, and bottom-left
 	# order, then draw the outline of the rotated bounding
 	# box
-	rect = order_points_old(box)
+	rect = order_points_old(box) # 4x2 np.ndarray (floats)
+	# rect = order_points(box) # 4x2 np.ndarray (floats)
 
 	# check to see if the new method should be used for
 	# ordering the coordinates
@@ -78,6 +79,7 @@ for (i, c) in enumerate(cnts):
 		rect = perspective.order_points(box)
 
 	# show the re-ordered coordinates
+	print("Reordered Coordinates")
 	print(rect.astype("int"))
 	print("")
 
